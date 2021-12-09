@@ -1,7 +1,9 @@
 # Note - All Credits Goes To Astra - It's Just Advanced Version Of Astra
 # © Astra
 
+import os
 
+os.system("pip3 install git+git://github.com/SpEcHiDe/Telethon@72afe59#egg=telethon")
 from telethon.sync import TelegramClient
 from telethon.errors.rpcerrorlist import PhoneNumberBannedError
 import pickle, os
