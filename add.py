@@ -1,13 +1,15 @@
 '''
 =============SON OF GENISYS=====================
-Astra members adding script
-Coded by a dumbass kid- github.com/Cryptonian007
+Alain members adding script
+Coded by a dumbass kid- github.com/Cryptonian007 & GitHub.com/infotechbro
 Apologies if anything in the code is dumb :)
 Copy with credits
 ************************************************
 '''
 
 # import libraries
+import os
+
 from telethon.sync import TelegramClient
 from telethon.tl.types import InputPeerChannel
 from telethon.errors.rpcerrorlist import PeerFloodError, UserPrivacyRestrictedError, PhoneNumberBannedError, ChatAdminRequiredError
@@ -45,18 +47,28 @@ minus = w + '[' + lg + '-' + w + ']' + rs
 def banner():
     import random
     #             Stylish
-    b = [
-    "___    _ _   __     __         "
-    "|_ _|__| | | _\ \   / / __ ___  "
-    " | |/ _` | |/ /\ \ / / '__/ _ \ "
-    "| | (_| |   <  \ V /| | | (_) |"
-    "|___\__,_|_|\_\  \_/ |_|  \___/"
-    ]
-    for char in b:
-        print(f'{random.choice(colors)}{char}{rs}')
-    #print('=============SON OF GENISYS==============')
-    print(f'{lg}   Version: {w}1.1{lg} | Author: {w}Alain{rs}\n')
+    print(f"""
+░█████╗░██╗░░░░░░█████╗░██╗███╗░░██╗  
+██╔══██╗██║░░░░░██╔══██╗██║████╗░██║  
+███████║██║░░░░░███████║██║██╔██╗██║  
+██╔══██║██║░░░░░██╔══██║██║██║╚████║  
+██║░░██║███████╗██║░░██║██║██║░╚███║  
+╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═╝╚═╝░░╚══╝  
 
+░██████╗░█████╗░██████╗░░█████╗░██████╗░██████╗░███████╗
+██╔════╝██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔════╝
+╚█████╗░██║░░╚═╝██████╔╝███████║██████╔╝██████╔╝█████╗░░
+░╚═══██╗██║░░██╗██╔══██╗██╔══██║██╔═══╝░██╔═══╝░██╔══╝░░
+██████╔╝╚█████╔╝██║░░██║██║░░██║██║░░░░░██║░░░░░███████╗
+╚═════╝░░╚════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░░░░╚═╝░░░░░╚══════╝
+
+{cy}                                           
+{cy}          Version : 1.01                   
+{cy}                                 By @Alain_xD          
+{cy}                                               
+ {r}If any one try to Sell you this script
+   {lg}Contact me on telegram @Alain_xD
+        """)
 
 # function to clear screen
 def clr():
@@ -75,7 +87,7 @@ while True:
 
 # create sessions(if any) and check for any banned accounts
 # TODO: Remove code input(just to check if an account is banned)
-print('\n' + info + lg + ' Checking for banned accounts...' + rs)
+print('\n' + info + lg + ' • Checking for banned accounts...' + rs)
 for a in accounts:
     phn = a[0]
     print(f'{plus}{grey} Checking {lg}{phn}')
@@ -87,7 +99,7 @@ for a in accounts:
             clnt.send_code_request(phn)
             print('OK')
         except PhoneNumberBannedError:
-            print(f'{error} {w}{phn} {r}is banned!{rs}')
+            print(f'[+] {error} {w}{phn} {r}is banned!{rs}')
             banned.append(a)
     for z in banned:
         accounts.remove(z)
