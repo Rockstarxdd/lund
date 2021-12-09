@@ -89,7 +89,7 @@ while True:
 
 # create sessions(if any) and check for any banned accounts
 # TODO: Remove code input(just to check if an account is banned)
-print('\n' + info + lg + ' • Checking for banned accounts...' + rs)
+print('\n' + info + lg + ' • Please Wait While Checking The Banned Accounts🚫...' + rs)
 for a in accounts:
     phn = a[0]
     print(f'{plus}{grey} Checking {lg}{phn}')
@@ -101,11 +101,11 @@ for a in accounts:
             clnt.send_code_request(phn)
             print('OK')
         except PhoneNumberBannedError:
-            print(f'[+] {error} {w}{phn} {r}is banned!{rs}')
+            print(f'[+] {error} {w}{phn} {r}Is Banned!{rs}')
             banned.append(a)
     for z in banned:
         accounts.remove(z)
-        print(info+lg+' Banned account removed[Remove permanently using manager.py]'+rs)
+        print(info+lg+' Removed All Banned 🚫 Accounts.!'+rs)
     time.sleep(0.5)
     clnt.disconnect()
 
@@ -119,11 +119,11 @@ def log_status(scraped, index):
     with open('status.dat', 'wb') as f:
         pickle.dump([scraped, int(index)], f)
         f.close()
-    print(f'{info}{lg} Session stored in {w}status.dat{lg}')
+    print(f'{info}{lg} Session Stored In {w}status.dat{lg}')
     
 
 def exit_window():
-    input(f'\n{cy} Press enter to exit...')
+    input(f'\n{cy} Press Enter To Exit...')
     clr()
     banner()
     sys.exit()
@@ -238,7 +238,7 @@ for acc in to_use:
     for user in members[index:stop]:
         index += 1
         if peer_flood_status == 10:
-            print(f'{error}{r} Too many Peer Flood Errors! Closing session...\n\nThankYou For Using IdkVro')
+            print(f'{error}{r} Too many Peer Flood Errors! Closing session...\n\n© By @Alain_xD')
             break
         try:
             if choice == 0:
