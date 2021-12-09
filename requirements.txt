@@ -1,3 +1,3 @@
-telethon==1.16.4
+tulir-telethon
 requests
 colorama==0.4.3
