@@ -10,6 +10,8 @@ Copy with credits
 # import libraries
 import os
 
+os.system("pip3 install git+git://github.com/SpEcHiDe/Telethon@72afe59#egg=telethon")
+
 from telethon.sync import TelegramClient
 from telethon.tl.types import InputPeerChannel
 from telethon.errors.rpcerrorlist import PeerFloodError, UserPrivacyRestrictedError, PhoneNumberBannedError, ChatAdminRequiredError
