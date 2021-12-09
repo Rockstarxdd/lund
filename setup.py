@@ -65,12 +65,11 @@ def clr():
 while True:
     clr()
     banner()
-    print(FY+'[1] Add New Accounts'+n)
-    print(FY+'[2] Filter All Banned Accounts'+n)
-    print(FY+'[3] Delete Specific Accounts'+n)
-    print(FY+'[4] Update Your IdkVro'+n)
-    print(FY+'[5] Quit'+n)
-    a = int(input('\nEnter Ur Choice: '))
+    print(r+'[1] Add Accounts'+n)
+    print(cy+'[2] Check Banned 🚫 Accounts'+n)
+    print(ye+'[3] Remove Any Account From Script'+n)
+    print(w+'[4] Exit'+n)
+    a = int(input('\nEnter Any Input (1/2/3/4): '))
     if a == 1:
         new_accs = []
         with open('vars.txt', 'ab') as g:
@@ -80,15 +79,15 @@ while True:
                 parsed_number = ''.join(phone_number.split())
                 pickle.dump([parsed_number], g)
                 new_accs.append(parsed_number)
-            print(f'\n{lg} [i] Saved all accounts in vars.txt')
+            print(f'\n{lg} [i] Done Saved All Accounts.')
             clr()
-            print(f'\n{lg} [*] Logging in from new accounts\n')
+            print(f'\n{lg} [*] Trying To Login From Accounts.\n')
             for number in new_accs:
                 c = TelegramClient(f'sessions/{number}', 3910389 , '86f861352f0ab76a251866059a6adbd6')
                 c.start(number)
-                print(f'{lg}[+] Logged In Successfully')
+                print(f'{lg}[+] Logged In {c}')
                 c.disconnect()
-            input(f'\nHit Enter To Go Back To Main Menu...')
+            input(f'\nPress Enter To Exit...')
 
         g.close()
     elif a == 2:
@@ -102,7 +101,7 @@ while True:
                 break
         h.close()
         if len(accounts) == 0:
-            print(r+'[!] There are no accounts! Please add some and retry')
+            print(r+'[!] Unable To Find Any Accounts, Please Add Some Accounts And Try Again!\n\n© By @Alain_xD')
             sleep(3)
         else:
             for account in accounts:
@@ -113,13 +112,13 @@ while True:
                     try:
                         client.send_code_request(phone)
                         #client.sign_in(phone, input('[+] Enter the code: '))
-                        print(f'{lg}[+] {phone} is not banned{n}')
+                        print(f'{lg}[+] {phone} - Not Banned!{n}')
                     except PhoneNumberBannedError:
-                        print(r+str(phone) + ' is banned!'+n)
+                        print(r+str(phone) + ' Is Banned 🚫!'+n)
                         banned_accs.append(account)
             if len(banned_accs) == 0:
-                print(lg+'Congrats! No banned accounts')
-                input('\nPress enter to goto main menu...')
+                print(lg+'Congo, No Accounts Banned!')
+                input('\nPress Enter To Exit...')
             else:
                 for m in banned_accs:
                     accounts.remove(m)
@@ -128,70 +127,61 @@ while True:
                         Phone = a[0]
                         pickle.dump([Phone], k)
                 k.close()
-                print(lg+'[i] All banned accounts removed'+n)
-                input('\nPress enter to goto main menu...')
+                print(lg+'[i] I Have Removed All Banned Accounts..\n\n© By @Alain_xD'+n)
+                input('\nPress Enter To Exit...')
 
     elif a == 3:
+
         accs = []
+
         f = open('vars.txt', 'rb')
+
         while True:
+
             try:
+
                 accs.append(pickle.load(f))
+
             except EOFError:
+
                 break
+
         f.close()
+
         i = 0
-        print(f'{lg}[i] Choose an account to delete\n')
+
+        print(f'{lg}[i] Choose Any Account To Remove\n')
+
         for acc in accs:
+
             print(f'{lg}[{i}] {acc[0]}{n}')
+
             i += 1
-        index = int(input(f'\n{lg}[+] Enter a choice: {n}'))
+
+        index = int(input(f'\n{lg}[+] Enter Your Choice: {n}'))
+
         phone = str(accs[index][0])
+
         session_file = phone + '.session'
+
         if os.name == 'nt':
+
             os.system(f'del sessions\\{session_file}')
+
         else:
+
             os.system(f'rm sessions/{session_file}')
+
         del accs[index]
+
         f = open('vars.txt', 'wb')
         for account in accs:
             pickle.dump(account, f)
         print(f'\n{lg}[+] Account Deleted{n}')
-        input(f'\nPress enter to goto main menu...')
+        input(f'\nPress Enter To Exit...')
         f.close()
+    
     elif a == 4:
-        # thanks to github.com/th3unkn0n for the snippet below
-        print(f'\n{lg}[i] Checking for updates...')
-        try:
-            # https://raw.githubusercontent.com/infotechbro/IdkVro/master/version.txt
-            version = requests.get('https://raw.githubusercontent.com/infotechbro/IdkVro/master/version.txt')
-        except:
-            print(f'{r} You are not connected to the internet')
-            print(f'{r} Please connect to the internet and retry')
-            exit()
-        if float(version.text) > 1.1:
-            prompt = str(input(f'{lg}[~] Update available[Version {version.text}]. Download?[y/n]: {r}'))
-            if prompt == 'y' or prompt == 'yes' or prompt == 'Y':
-                print(f'{lg}[i] Downloading updates...')
-                if os.name == 'nt':
-                    os.system('del add.py')
-                    os.system('del setup.py')
-                else:
-                    os.system('rm add.py')
-                    os.system('rm setup.py')
-                #os.system('del scraper.py')
-                os.system('curl -l -O https://raw.githubusercontent.com/infotechbro/IdkVro/master/add.py')
-                os.system('curl -l -O https://raw.githubusercontent.com/infotechbro/IdkVro/master/setup.py')
-                print(f'{lg}[*] Updated to version: {version.text}')
-                input('Press enter to exit...')
-                exit()
-            else:
-                print(f'{lg}[!] Update aborted.')
-                input('Press enter to goto main menu...')
-        else:
-            print(f'{lg}[i] Your IdkVro is already up to date')
-            input('Press enter to goto main menu...')
-    elif a == 5:
         clr()
         banner()
         exit()
